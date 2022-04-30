@@ -9,7 +9,7 @@ hc emit_hook reload
 # AUTOSTART #
 #-----------#
 picom --experimental-backend &
-xwallpaper --zoom $HOME/.config/herbstluftwm/void5.png
+xwallpaper --zoom $HOME/.config/herbstluftwm/keys.jpg
 xfce4-power-manager &
 polybar -c $HOME/.config/herbstluftwm/polybar_config mainbar-herbst &
 
@@ -28,12 +28,9 @@ hc keybind $Mod-Shift-c spawn kitty -T logout -e herbst-logout.sh
 hc keybind $Mod-Control-r reload
 hc keybind $Mod-Shift-q close
 hc keybind $Mod-Shift-Return spawn "${TERMINAL:-kitty}" # 
-hc keybind $Mod-Shift-k spawn kitty
 
 # multimedia #
 #------------#
-hc keybind XF86MonBrightnessUp spawn lux -a 10%
-hc keybind XF86MonBrightnessDown spawn lux -s 10%
 hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume 0 +5%
 hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume 0 -5%
 hc keybind XF86AudioMute spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -42,29 +39,13 @@ hc keybind XF86AudioNext spawn playerctl next
 hc keybind XF86AudioPrev spawn playerctl previous
 hc keybind $Mod-Control-s spawn playerctl stop
 
-# programs #
-# #--------#
-hc keybind $Mod-w spawn bgd
-hc keybind $Mod-Control-t spawn alacritty -e "$HOME/scripts/changer"
-hc keybind $Mod-Control-y spawn ~/.local/scripts/ytsubs.sh
-hc keybind $Mod-Control-c spawn $HOME/scripts/herbstchanger
-hc keybind $Mod-Control-t spawn $HOME/scripts/changer 
-hc keybind $Mod-t spawn alacritty -e ./.local/scripts/schedule.sh
-hc keybind $Mod-Shift-w spawn kitty -T windows -e windows.sh
-
 # run launchers #
 #---------------#
-#hc keybind $Mod-Control-f spawn dmenu_run -p Launch: -fn Hermit:size=10 -l 10 -g 7 -nb '#222222' -sb '#007687' -sf '#222222' -nf '#b8b8b8'
-hc keybind $Mod-Shift-r spawn rofi -show drun
-hc keybind $Mod-Control-e spawn rofi -show emoji
-hc keybind $Mod-Shift-v spawn vmach.sh
 hc keybind $Mod-Shift-i spawn kitty -T vsp2 -e vsp2
 hc keybind $Mod-Shift-d spawn kitty -T launch.sh -e launch.sh 
-hc keybind $Mod-Shift-e spawn kitty -T configs -e edit_configs.sh
 
 # browsers #
 #----------#
-hc keybind $Mod-Shift-b spawn brave-browser-stable
 hc keybind $Mod-Shift-a spawn firefox
 
 # scratchpads #
@@ -73,7 +54,6 @@ hc keybind $Mod-Return spawn scratch scratchpad
 hc keybind $Mod-Control-f spawn scratch FM
 hc keybind $Mod-q spawn scratch2 qutebrowser 
 hc keybind $Mod-Control-Return spawn scratchpad
-hc keybind $Mod-m spawn scratch Mail
 
 # focusing client #
 #-----------------#s
@@ -123,8 +103,6 @@ done
 
 # layouting #
 #-----------#
-hc keybind $Mod-s spawn new-layout.sh 
-hc keybind $Mod-l spawn ./.local/scripts/load-layout.sh
 hc keybind $Mod-r remove
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
@@ -204,7 +182,6 @@ hc rule title~'logout' floating=on floatplacement=center floating_geometry=320x2
 hc rule title~'scratchpad' floating=on floatplacement=center floating_geometry=1000x500
 hc rule title~'FM' floating=on floatplacement=center floating_geometry=1000x800
 hc rule class~'qutebrowser' floating=on floatplacement=center floating_geometry=1800x1000
-hc rule title~'Mail' floating=on floatplacement=center floating_geometry=1500x800
 
 hc rule focus=on # normally focus new clients
 hc rule floatplacement=center
